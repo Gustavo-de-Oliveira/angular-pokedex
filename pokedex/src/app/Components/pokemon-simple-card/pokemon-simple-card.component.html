@@ -1,0 +1,18 @@
+<li class="pokemon {{pokemon._types[0]}}" id="{{pokemon._id}}">
+    <span class="number">#{{pokemon._id}}</span>
+    <span class="name">{{pokemon._nome}}</span>
+    <span class="name">Height: {{pokemon._peso}} | weight: {{pokemon._altura}}</span>
+
+    <div class="detail">
+        <ol class="types" *ngFor="let type of pokemon._types">
+            <li class="type {{pokemon._types[0].type.name}}">{{type.type.name}}</li>
+        </ol>
+
+        <ol class="types" *ngFor="let abilidade of pokemon._abilidades">
+            <li class="type {{pokemon._types[0].type.name}}">{{abilidade.ability.name}}</li>
+        </ol>
+
+        <img src="{{pokemon._foto}}"
+            alt="{{pokemon._nome}}">
+    </div>
+</li>
