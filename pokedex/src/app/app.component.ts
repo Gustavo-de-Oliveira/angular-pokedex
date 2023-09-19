@@ -10,13 +10,22 @@ import { Pokemon } from './Model/pokemon';
 export class AppComponent implements OnInit {
   title = 'pokedex';
   public getAllPokemons: Pokemon[];
+  private limit = 9;
 
   constructor ( public pokemonService: PokemonService) {
     this.getAllPokemons = []
   }
 
+  loadMore() {
+    this.pokemonService.listPokemons(this.limit+=9).subscribe(
+      res => {
+        this.getAllPokemons = res.results;
+      }
+    );
+  }
+
   ngOnInit(): void {
-    this.pokemonService.listPokemons().subscribe(
+    this.pokemonService.listPokemons(this.limit).subscribe(
       res => {
         this.getAllPokemons = res.results;
       }

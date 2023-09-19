@@ -9,17 +9,14 @@ import { Pokemon } from 'src/app/Model/pokemon';
 })
 export class PokemonService {
 
-  url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=30';
-
   constructor(private httpClient: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  listPokemons():Observable<Pokemon>{
-    
-    return this.httpClient.get<Pokemon>(this.url).pipe(
+  listPokemons(limit: number):Observable<Pokemon>{
+    return this.httpClient.get<Pokemon>(`https://pokeapi.co/api/v2/pokemon?offset=0&limit=${limit}`).pipe(
      tap( res => res ),
      tap( res => {
       res.results.map( (pokemon: Pokemon) => {
@@ -29,7 +26,6 @@ export class PokemonService {
             pokemon._nome = response.name
             pokemon._foto = response.sprites.other.dream_world.front_default
             pokemon._types = response.types
-            console.log(pokemon._types)
             pokemon._abilidades = response.abilities
             pokemon._peso = response.weight
             pokemon._altura = response.height

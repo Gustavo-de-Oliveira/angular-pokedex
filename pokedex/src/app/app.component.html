@@ -10,6 +10,8 @@
 <ol id="pokemonList" class="pokemons">
   <PokemonSimpleCardComponent *ngFor="let pokemon of getAllPokemons;" [pokemon]="pokemon" >
   </PokemonSimpleCardComponent>
+
+  <button (click)="loadMore()"> Load More </button>
 </ol>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
@@ -19,4 +21,3 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
